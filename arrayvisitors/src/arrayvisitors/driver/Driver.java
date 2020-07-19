@@ -3,6 +3,15 @@ package arrayvisitors.driver;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.nio.file.InvalidPathException;
+import java.util.ArrayList;
+
+import arrayvisitors.adt.MyArray;
+import arrayvisitors.adt.MyArrayList;
+import arrayvisitors.adt.MyArrayListI;
+import arrayvisitors.visitors.ElementI;
+import arrayvisitors.visitors.PopulateMyArrayVisitor;
+import arrayvisitors.visitors.SetI;
+import arrayvisitors.visitors.Visitor;
 
 /**
  * Driver class start point.
@@ -25,5 +34,21 @@ public class Driver {
             System.exit(0);
         }
         System.out.println("Hello World! Lets get started with the assignment");
+        ArrayList<String> fileList = new ArrayList<>();
+        fileList.add(args[0]);
+        fileList.add(args[1]);
+        Visitor populateMyArrayVisitor = new PopulateMyArrayVisitor();
+        MyArrayListI myArrayListIObj = new MyArrayList();
+
+        for (String inputFile : fileList) {
+            ((SetI) populateMyArrayVisitor).set(inputFile);
+            ElementI e = new MyArray();
+            e.accept(populateMyArrayVisitor);
+            myArrayListIObj.insertMyArrayObj(e);
+        }
+
+        // Visitor commonInstVisitor = new CommonIntsVisitor();
+        // Visitor missingIntsVisitor = new MissingIntsVisitor();
+
     }
 }
