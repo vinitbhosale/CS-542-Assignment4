@@ -3,6 +3,8 @@ package arrayvisitors.visitors;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.nio.file.InvalidPathException;
+import java.util.ArrayList;
+
 import arrayvisitors.adt.MyArrayI;
 import arrayvisitors.adt.MyArrayListI;
 import arrayvisitors.util.FileProcessor;
@@ -38,17 +40,17 @@ public class PopulateMyArrayVisitor implements Visitor, SetI {
                 System.err.println("Empty line in input file!");
             }
             integerValue = Integer.parseInt(strData);
-            inMyArrObj.storeIntegers(integerValue);
+            ((MyArrayI) inMyArrObj).storeIntegers(integerValue);
 
             strData = fp.poll();
         }
-        inMyArrObj.print();
+        ((MyArrayI) inMyArrObj).print();
         fp.close();
 
     }
 
     @Override
-    public void visit(MyArrayListI inMyArrayListI) {
+    public void visit(ArrayList<ElementI> inMyArrayListI) {
         // TODO Auto-generated method stub
 
     }

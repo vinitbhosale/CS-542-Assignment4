@@ -8,7 +8,9 @@ import java.util.ArrayList;
 import arrayvisitors.adt.MyArray;
 import arrayvisitors.adt.MyArrayList;
 import arrayvisitors.adt.MyArrayListI;
+import arrayvisitors.visitors.CommonIntsVisitor;
 import arrayvisitors.visitors.ElementI;
+import arrayvisitors.visitors.MissingIntsVisitor;
 import arrayvisitors.visitors.PopulateMyArrayVisitor;
 import arrayvisitors.visitors.SetI;
 import arrayvisitors.visitors.Visitor;
@@ -38,17 +40,21 @@ public class Driver {
         fileList.add(args[0]);
         fileList.add(args[1]);
         Visitor populateMyArrayVisitor = new PopulateMyArrayVisitor();
-        MyArrayListI myArrayListIObj = new MyArrayList();
+        Visitor commonInstVisitor = new CommonIntsVisitor();
+        Visitor missingIntsVisitor = new MissingIntsVisitor();
+        ElementI myArrayListIObj = new MyArrayList();
 
         for (String inputFile : fileList) {
             ((SetI) populateMyArrayVisitor).set(inputFile);
             ElementI e = new MyArray();
             e.accept(populateMyArrayVisitor);
-            myArrayListIObj.insertMyArrayObj(e);
+            ((MyArrayListI) myArrayListIObj).insertMyArrayObj(e);
         }
 
-        // Visitor commonInstVisitor = new CommonIntsVisitor();
-        // Visitor missingIntsVisitor = new MissingIntsVisitor();
+
+        myArrayListIObj.accept(commonInstVisitor);
+
+        
 
     }
 }

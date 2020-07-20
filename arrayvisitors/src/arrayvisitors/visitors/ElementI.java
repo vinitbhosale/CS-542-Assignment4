@@ -8,4 +8,5 @@ public interface ElementI {
     public void accept(Visitor visitor)
             throws InvalidPathException, SecurityException, FileNotFoundException, IOException;
 
+
 }
