@@ -11,7 +11,8 @@ import arrayvisitors.adt.MyArrayListI;
 public interface Visitor {
     public void visit(MyArrayI inMyArrObj)
             throws InvalidPathException, SecurityException, FileNotFoundException, IOException;
-    
-    public void visit(ArrayList<ElementI> inMyArrayListI) throws InvalidPathException, SecurityException, FileNotFoundException, IOException;
+
+    public void visit(MyArrayListI inMyArrListObj)
+            throws InvalidPathException, SecurityException, FileNotFoundException, IOException;
 
 }

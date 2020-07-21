@@ -12,17 +12,18 @@ public class CommonIntsVisitor implements Visitor {
     private int[] inputArray;
     private int[] temp;
     private int counter = 0;
+    private ArrayList<ElementI> myArrayObjList = new ArrayList<>();
 
     @Override
     public void visit(MyArrayI inMyArrObj)
             throws InvalidPathException, SecurityException, FileNotFoundException, IOException {
         // TODO Auto-generated method stub
         if (counter == 0) {
-            inputArray = ((MyArrayI) inMyArrObj).getArray();
+            inputArray = inMyArrObj.getArray();
             counter++;
         } else {
             temp = inputArray;
-            inputArray = ((MyArrayI) inMyArrObj).getArray();
+            inputArray = inMyArrObj.getArray();
 
             for (int i = 0; i < temp.length; i++) {
                 for (int j = 0; j < inputArray.length; j++) {
@@ -37,11 +38,12 @@ public class CommonIntsVisitor implements Visitor {
     }
 
     @Override
-    public void visit(ArrayList<ElementI> inMyArrayListI)
+    public void visit(MyArrayListI inMyArrListObj)
             throws InvalidPathException, SecurityException, FileNotFoundException, IOException {
         // TODO Auto-generated method stub
-        for (ElementI e : inMyArrayListI) {
-            e.accept(this);
+        myArrayObjList = inMyArrListObj.getMyArrayList();
+        for (ElementI myArrayElement : myArrayObjList) {
+            myArrayElement.accept(this);
         }
     }
 

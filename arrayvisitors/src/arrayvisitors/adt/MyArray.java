@@ -1,6 +1,5 @@
 package arrayvisitors.adt;
 
-
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.nio.file.InvalidPathException;
@@ -8,7 +7,7 @@ import java.nio.file.InvalidPathException;
 import arrayvisitors.visitors.ElementI;
 import arrayvisitors.visitors.Visitor;
 
-public class MyArray implements MyArrayI, ElementI {
+public class MyArray implements MyArrayI {
 
     private int inputArray[];
     private int index;
@@ -19,6 +18,19 @@ public class MyArray implements MyArrayI, ElementI {
     }
 
     @Override
+    public void accept(Visitor visitor)
+            throws InvalidPathException, SecurityException, FileNotFoundException, IOException {
+        // TODO Auto-generated method stub
+        visitor.visit(this);
+    }
+
+    @Override
+    public int[] getArray() {
+        // TODO Auto-generated method stub
+        return inputArray;
+    }
+
+    @Override
     public void storeIntegers(int inValue) {
         // TODO Auto-generated method stub
         if (inputArray.length == index) {
@@ -26,7 +38,6 @@ public class MyArray implements MyArrayI, ElementI {
         }
         inputArray[index] = inValue;
         index++;
-    
 
     }
 
@@ -51,19 +62,6 @@ public class MyArray implements MyArrayI, ElementI {
         }
     }
 
-    @Override
-    public void accept(Visitor visitor)
-            throws InvalidPathException, SecurityException, FileNotFoundException, IOException {
-        // TODO Auto-generated method stub
-        visitor.visit(this);
-    }
-
-    @Override
-    public int[] getArray() {
-        // TODO Auto-generated method stub
-        return inputArray;
-    }
-
-
+   
 
 }

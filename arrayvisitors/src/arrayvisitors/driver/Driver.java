@@ -39,20 +39,24 @@ public class Driver {
         ArrayList<String> fileList = new ArrayList<>();
         fileList.add(args[0]);
         fileList.add(args[1]);
+
         Visitor populateMyArrayVisitor = new PopulateMyArrayVisitor();
         Visitor commonInstVisitor = new CommonIntsVisitor();
         Visitor missingIntsVisitor = new MissingIntsVisitor();
+        
         ElementI myArrayListIObj = new MyArrayList();
-
+//Done
         for (String inputFile : fileList) {
             ((SetI) populateMyArrayVisitor).set(inputFile);
-            ElementI e = new MyArray();
-            e.accept(populateMyArrayVisitor);
-            ((MyArrayListI) myArrayListIObj).insertMyArrayObj(e);
+            ElementI myArrayElement = new MyArray();
+            myArrayElement.accept(populateMyArrayVisitor);
+            ((MyArrayListI) myArrayListIObj).insertMyArrayObj(myArrayElement);
         }
 
 
-        myArrayListIObj.accept(commonInstVisitor);
+        //myArrayListIObj.accept(commonInstVisitor);
+        myArrayListIObj.accept(missingIntsVisitor);
+        
 
         
 

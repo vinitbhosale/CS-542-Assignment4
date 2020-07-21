@@ -5,23 +5,18 @@ import java.io.IOException;
 import java.nio.file.InvalidPathException;
 import java.util.ArrayList;
 
-
 import arrayvisitors.visitors.ElementI;
 import arrayvisitors.visitors.Visitor;
 
-public class MyArrayList implements MyArrayListI, ElementI {
+public class MyArrayList implements MyArrayListI {
     private ArrayList<ElementI> myArrayList = new ArrayList<>();
 
     @Override
     public void accept(Visitor visitor)
             throws InvalidPathException, SecurityException, FileNotFoundException, IOException {
         // TODO Auto-generated method stub
-    //    for (ElementI e : myArrayList) {
-    //        e.accept(visitor);
-    //    }
-        visitor.visit(myArrayList);
-        
-        
+
+        visitor.visit(this);
     }
 
     @Override
@@ -30,5 +25,10 @@ public class MyArrayList implements MyArrayListI, ElementI {
         myArrayList.add(inMyArrayObjList);
     }
 
+    @Override
+    public ArrayList<ElementI> getMyArrayList() {
+        // TODO Auto-generated method stub
+        return myArrayList;
+    }
 
 }
