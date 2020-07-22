@@ -1,3 +1,5 @@
 .*
 !.gitignore
 **/BUILD/
+**/commonintsout.txt
+**/missingintsout.txt
