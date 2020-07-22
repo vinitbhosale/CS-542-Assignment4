@@ -7,5 +7,6 @@ public interface MyArrayI extends ElementI{
     public void increaseArraySize();
     public void print();
     public int[] getArray();
+    public int getIndex();
 
 }

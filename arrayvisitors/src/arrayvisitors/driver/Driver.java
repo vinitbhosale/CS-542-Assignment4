@@ -8,12 +8,16 @@ import java.util.ArrayList;
 import arrayvisitors.adt.MyArray;
 import arrayvisitors.adt.MyArrayList;
 import arrayvisitors.adt.MyArrayListI;
+import arrayvisitors.util.Results;
+import arrayvisitors.util.ResultsI;
 import arrayvisitors.visitors.CommonIntsVisitor;
 import arrayvisitors.visitors.ElementI;
 import arrayvisitors.visitors.MissingIntsVisitor;
 import arrayvisitors.visitors.PopulateMyArrayVisitor;
 import arrayvisitors.visitors.SetI;
 import arrayvisitors.visitors.Visitor;
+import arrayvisitors.util.StdoutDisplayInterface;
+import arrayvisitors.util.FileDisplayInterface;
 
 /**
  * Driver class start point.
@@ -40,9 +44,12 @@ public class Driver {
         fileList.add(args[0]);
         fileList.add(args[1]);
 
+        ResultsI commonIntRes = new Results(args[2]);
+        ResultsI missingIntRes = new Results(args[3]);
+
         Visitor populateMyArrayVisitor = new PopulateMyArrayVisitor();
-        Visitor commonInstVisitor = new CommonIntsVisitor();
-        Visitor missingIntsVisitor = new MissingIntsVisitor();
+        Visitor commonInstVisitor = new CommonIntsVisitor(commonIntRes);
+        Visitor missingIntsVisitor = new MissingIntsVisitor(missingIntRes);
         
         ElementI myArrayListIObj = new MyArrayList();
 //Done
@@ -54,11 +61,14 @@ public class Driver {
         }
 
 
-        //myArrayListIObj.accept(commonInstVisitor);
+        myArrayListIObj.accept(commonInstVisitor);
         myArrayListIObj.accept(missingIntsVisitor);
-        
 
-        
+        ((StdoutDisplayInterface) commonIntRes).writeToStdout();
+        ((StdoutDisplayInterface) missingIntRes).writeToStdout();
+
+        ((FileDisplayInterface) commonIntRes).writeToFile();
+        ((FileDisplayInterface) missingIntRes).writeToFile();
 
     }
 }

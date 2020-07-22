@@ -7,14 +7,21 @@ import java.util.ArrayList;
 
 import arrayvisitors.adt.MyArrayI;
 import arrayvisitors.adt.MyArrayListI;
+import arrayvisitors.util.ResultsI;
 
 public class MissingIntsVisitor implements Visitor {
     private ArrayList<ElementI> myArrayObjList = new ArrayList<>();
     private int[] inputArray1;
     private int[] inputArray2;
+    private int index;
     private int[] temp;
     private int counter = 0;
     private int limit = 100;
+    private ResultsI res;
+
+    public MissingIntsVisitor(ResultsI inRes) {
+        res = inRes;
+    }
 
     @Override
     public void visit(MyArrayI inMyArrObj)
@@ -22,11 +29,13 @@ public class MissingIntsVisitor implements Visitor {
         // TODO Auto-generated method stub
         if (counter == 0) {
             inputArray1 = inMyArrObj.getArray();
-            findMissingInts(inputArray1, 1);
+            index = inMyArrObj.getIndex();
+            findMissingInts(inputArray1,index, 1);
             counter++;
-        }else{
+        } else {
             inputArray2 = inMyArrObj.getArray();
-            findMissingInts(inputArray2, 2);
+            index = inMyArrObj.getIndex();
+            findMissingInts(inputArray2,index, 2);
         }
 
     }
@@ -41,20 +50,21 @@ public class MissingIntsVisitor implements Visitor {
         }
     }
 
-    public void findMissingInts(int[] inputArray, int k) {
+    public void findMissingInts(int[] inputArray,int index, int k) {
         temp = new int[limit];
-        for (int i : inputArray1) {
-            if (i < 100) {
-                temp[i] = 1;
+        for (int i = 0; i < limit; i++) {
+            temp[i] = 0;
+        }
+        for (int i=0; i < index; i++) {
+            if(i<limit){
+                temp[inputArray[i]] = 1;
             }
         }
-        System.out.println("Missing in input"+ k+":");
+        res.storeResult("Missing in input" + k + ":");
         int j = 0;
         while (j < limit) {
             if (temp[j] == 0) {
-                System.out.println(j);
-            } else {
-                j++;
+                res.storeResult(Integer.toString(j));
             }
             j++;
         }

@@ -7,12 +7,20 @@ import java.util.ArrayList;
 
 import arrayvisitors.adt.MyArrayI;
 import arrayvisitors.adt.MyArrayListI;
+import arrayvisitors.util.ResultsI;
 
 public class CommonIntsVisitor implements Visitor {
     private int[] inputArray;
     private int[] temp;
+    private int index1;
+    private int index2;
     private int counter = 0;
     private ArrayList<ElementI> myArrayObjList = new ArrayList<>();
+    private ResultsI res;
+
+    public CommonIntsVisitor(ResultsI inRes) {
+        res = inRes;
+    }
 
     @Override
     public void visit(MyArrayI inMyArrObj)
@@ -20,15 +28,17 @@ public class CommonIntsVisitor implements Visitor {
         // TODO Auto-generated method stub
         if (counter == 0) {
             inputArray = inMyArrObj.getArray();
+            index1 = inMyArrObj.getIndex();
             counter++;
         } else {
             temp = inputArray;
             inputArray = inMyArrObj.getArray();
-
-            for (int i = 0; i < temp.length; i++) {
-                for (int j = 0; j < inputArray.length; j++) {
+            index2 = inMyArrObj.getIndex();
+            res.storeResult("Commom integers in both arrays:");
+            for (int i = 0; i < index1; i++) {
+                for (int j = 0; j < index2; j++) {
                     if (temp[i] == inputArray[j]) {
-                        System.out.println(temp[i]);
+                        res.storeResult(Integer.toString(temp[i]));
                         break;
                     }
                 }

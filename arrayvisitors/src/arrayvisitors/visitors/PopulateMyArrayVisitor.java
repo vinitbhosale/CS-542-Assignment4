@@ -14,6 +14,7 @@ public class PopulateMyArrayVisitor implements Visitor, SetI {
     private String filePath;
     private String strData;
     private int integerValue;
+    private int LIMIT = 100;
 
     public PopulateMyArrayVisitor() {
     }
@@ -54,9 +55,14 @@ public class PopulateMyArrayVisitor implements Visitor, SetI {
                 System.err.println("Empty line in input file!");
             }
             integerValue = Integer.parseInt(strData);
-            inMyArrObj.storeIntegers(integerValue);
+            if (integerValue >=0 && integerValue < 100) {
+                inMyArrObj.storeIntegers(integerValue);
 
-            strData = fp.poll();
+                strData = fp.poll();
+            }else{
+                strData = fp.poll();
+            }
+
         }
         //inMyArrObj.print();
         fp.close();

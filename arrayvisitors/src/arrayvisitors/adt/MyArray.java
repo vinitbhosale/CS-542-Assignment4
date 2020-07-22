@@ -3,6 +3,7 @@ package arrayvisitors.adt;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.nio.file.InvalidPathException;
+import java.util.Arrays;
 
 import arrayvisitors.visitors.ElementI;
 import arrayvisitors.visitors.Visitor;
@@ -37,6 +38,7 @@ public class MyArray implements MyArrayI {
             increaseArraySize();
         }
         inputArray[index] = inValue;
+        //Arrays.sort(inputArray);
         index++;
 
     }
@@ -60,6 +62,12 @@ public class MyArray implements MyArrayI {
         for (int i = 0; i < inputArray.length; i++) {
             System.out.println(inputArray[i]);
         }
+    }
+
+    @Override
+    public int getIndex() {
+        // TODO Auto-generated method stub
+        return index;
     }
 
    
