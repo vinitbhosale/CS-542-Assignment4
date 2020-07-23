@@ -100,6 +100,11 @@ public class MyArray implements MyArrayI {
         return index;
     }
 
+    @Override
+    public String toString() {
+    return "Class: MyArray, Data Members: [inputArray=" + inputArray.toString() + "index=" + index + "]";
+    }
+
    
 
 }

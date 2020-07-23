@@ -19,7 +19,6 @@ public class MissingIntsVisitor implements Visitor {
     private int counter = 0;
     private int limit = 100;
     private ResultsI res;
-    private MyLogger mg;
 
     public MissingIntsVisitor(ResultsI inRes) {
         res = inRes;
@@ -90,5 +89,13 @@ public class MissingIntsVisitor implements Visitor {
             }
             j++;
         }
+    }
+  
+    @Override
+    public String toString() {
+        return "Class: MissingIntsVisitor, Data Members: [myArrayObjList=" + myArrayObjList.toString() + "inputArray1=" + inputArray1.toString() + 
+        "inputArray2=" + inputArray2.toString() + "index=" + index + "temp=" + temp.toString() + "counter=" + counter + "limit=" + limit + 
+        "res=" + res.toString() + "]";
+
     }
 }

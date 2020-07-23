@@ -23,7 +23,6 @@ public class CommonIntsVisitor implements Visitor {
     private int counter = 0;
     private ArrayList<ElementI> myArrayObjList = new ArrayList<>();
     private ResultsI res;
-    private MyLogger mg;
 
     /**
      * CommonIntsVisitor Constructor.
@@ -82,6 +81,13 @@ public class CommonIntsVisitor implements Visitor {
         for (ElementI myArrayElement : myArrayObjList) {
             myArrayElement.accept(this);
         }
+    }
+    
+    @Override
+    public String toString() {
+        return "Class: CommonIntsVisitor, Data Members: [inputArray=" + inputArray.toString() + "temp=" + temp.toString() + "counter=" + counter + 
+        "index1=" + index1 + "index2=" + index2 +"myArrayObjList=" + myArrayObjList.toString() + "res=" + res.toString() + "]";
+
     }
 
 }

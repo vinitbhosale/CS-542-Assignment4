@@ -15,7 +15,6 @@ public class PopulateMyArrayVisitor implements Visitor, SetI {
     private String filePath;
     private String strData;
     private int integerValue;
-    private int LIMIT = 100;
 
     public PopulateMyArrayVisitor() {
         MyLogger.getInstnace().writeMessage("PopulateMyArrayVisitor Constructor", MyLogger.DebugLevel.CONSTRUCTOR);
@@ -86,6 +85,13 @@ public class PopulateMyArrayVisitor implements Visitor, SetI {
 
         }
         fp.close();
+
+    }
+
+    @Override
+    public String toString() {
+        return "Class: PopulateMyArrayVisitor, Data Members: [filePath=" + filePath.toString() + "strData=" + strData.toString() + 
+        "integerValue]";
 
     }
 

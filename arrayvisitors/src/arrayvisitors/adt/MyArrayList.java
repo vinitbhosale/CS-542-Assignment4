@@ -56,5 +56,9 @@ public class MyArrayList implements MyArrayListI {
         // TODO Auto-generated method stub
         return myArrayList;
     }
+    @Override
+    public String toString() {
+    return "Class: MyArrayList, Data Members: [myArrayList=" + myArrayList.toString() + "]";
+    }
 
 }

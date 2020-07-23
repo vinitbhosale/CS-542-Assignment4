@@ -70,6 +70,12 @@ public class Results implements ResultsI, StdoutDisplayInterface, FileDisplayInt
         System.out.println(result);
     }
 
+    @Override
+    public String toString() {
+        return "Class: Results, Data Members: [result=" + result.toString() + ", filePath=" + filePath.toString()
+                + ", outputFile=" + outputFile.toString() + ", outputBufferedWriter=" + outputBufferedWriter.toString()
+                + "]";
+    }
    
     
 }
