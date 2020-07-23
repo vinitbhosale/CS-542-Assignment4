@@ -52,7 +52,7 @@ public class Driver {
 
             }
             // Condition to check same name of input and output files.
-            if (args[0] == args[1] || args[2] == args[3]) {
+            if (args[0].equals(args[1]) || args[2].equals(args[3])) {
                 throw new SameFileNameException("No two files can have same name!");
             }
 
