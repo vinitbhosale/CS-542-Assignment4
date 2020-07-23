@@ -8,6 +8,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.InvalidPathException;
 import java.nio.file.Paths;
+import arrayvisitors.util.MyLogger;
 
 /**
  * FileProcessor is a utility to be used to read in the contents of the input
@@ -18,6 +19,7 @@ import java.nio.file.Paths;
  */
 public class FileProcessor {
     private BufferedReader reader;
+ 
 
     /**
      * Constructs a FileProcessor that can stream the contents of the provided input
@@ -32,11 +34,11 @@ public class FileProcessor {
      */
     public FileProcessor(String inputFilePath)
             throws InvalidPathException, SecurityException, FileNotFoundException, IOException {
-        //MyLogger.writeMessage("FileProcessor constructor.", MyLogger.DebugLevel.CONSTRUCTOR);
+        MyLogger.getInstnace().writeMessage("FileProcessor constructor.", MyLogger.DebugLevel.CONSTRUCTOR);
         if (!Files.exists(Paths.get(inputFilePath))) {
             throw new FileNotFoundException("invalid input file or input file in incorrect location");
         }
-        //MyLogger.writeMessage("Bufferreader object reader intiatizing.", MyLogger.DebugLevel.CONSTRUCTOR);
+        MyLogger.getInstnace().writeMessage("Bufferreader object reader intiatizing.", MyLogger.DebugLevel.CONSTRUCTOR);
         reader = new BufferedReader(new FileReader(new File(inputFilePath)));
     }
 

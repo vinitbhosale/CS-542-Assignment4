@@ -8,6 +8,9 @@ import java.util.ArrayList;
 import arrayvisitors.adt.MyArrayI;
 import arrayvisitors.adt.MyArrayListI;
 
+/**
+ * Visitor Interface that initialize methods used by visitors. 
+ */
 public interface Visitor {
     public void visit(MyArrayI inMyArrObj)
             throws InvalidPathException, SecurityException, FileNotFoundException, IOException;
