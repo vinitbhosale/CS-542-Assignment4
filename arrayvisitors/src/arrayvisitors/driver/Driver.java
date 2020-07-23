@@ -108,8 +108,8 @@ public class Driver {
             myArrayListIObj.accept(missingIntsVisitor);
 
 
-            MyLogger.getInstnace().writeMessage("Calling printResults to print all trees in Stdout.", MyLogger.DebugLevel.DRIVER);
-            MyLogger.getInstnace().writeMessage("Calling printResultsToFile to print all trees in respective output file.\n",
+            MyLogger.getInstnace().writeMessage("Calling printResults to print results in Stdout.", MyLogger.DebugLevel.DRIVER);
+            MyLogger.getInstnace().writeMessage("Calling printResultsToFile to print results in respective output file.\n",
                     MyLogger.DebugLevel.DRIVER);
             // Calling print method to display output on StdOut.
             printResults((StdoutDisplayInterface) commonIntRes, (StdoutDisplayInterface) missingIntRes);
